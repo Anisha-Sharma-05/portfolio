@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Anisha Sharma — Website Developer Executive Portfolio">
+  <title>Anisha Sharma | Website Developer Executive</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --ink: #292c46;
+      --ink-light: #373b5c;
+      --orange: #c95b2c;
+      --orange2: #e47a45;
+      --orange-glow: rgba(201, 91, 44, 0.35);
+      --cream: #f6f3ee;
+      --paper: #fffdfa;
+      --muted: #697084;
+      --line: #ded9d1;
+      --shadow: 0 24px 70px rgba(41, 44, 70, 0.12);
+      --glass: rgba(255, 253, 250, 0.88);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    ::selection {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    /* Scroll Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--orange2));
+      width: 0%;
+      z-index: 1000;
+      box-shadow: 0 0 12px var(--orange-glow);
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      z-index: 999;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 32px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: var(--glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(41, 44, 70, 0.1);
+      border-radius: 16px;
+      box-shadow: 0 12px 35px rgba(41, 44, 70, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.04em;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .logo span {
+      color: var(--orange);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #555b70;
+    }
+
+    .nav-links a {
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--orange);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--orange-glow);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: none;
+      color: var(--ink);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: grid;
+      place-items: center;
+      padding: 160px 7% 90px;
+      overflow: hidden;
+      background: var(--paper);
+    }
+
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(41, 44, 70, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(41, 44, 70, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      to { background-position: 40px 40px; }
+    }
+
+    .hero-inner {
+      width: min(1180px, 100%);
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--orange);
+      font-family: "Space Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      background: rgba(201, 91, 44, 0.08);
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(201, 91, 44, 0.2);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 0 var(--orange-glow);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 10px transparent; }
+    }
+
+    h1 {
+      font-size: clamp(44px, 6.2vw, 82px);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      font-weight: 800;
+    }
+
+    h1 .accent {
+      color: var(--orange);
+      position: relative;
+      display: inline-block;
+    }
+
+    .typewrap {
+      height: 40px;
+      margin-top: 20px;
+      font-family: "Space Mono", monospace;
+      font-size: clamp(16px, 2vw, 21px);
+      color: #565d73;
+      display: flex;
+      align-items: center;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1.1em;
+      background: var(--orange);
+      margin-left: 4px;
+      animation: blink 0.8s steps(1) infinite;
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .hero-copy {
+      max-width: 640px;
+      color: #646b7d;
+      line-height: 1.7;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid var(--ink);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: translateX(-101%);
+      background: var(--orange);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: -1;
+    }
+
+    .btn:hover::before {
+      transform: translateX(0);
+    }
+
+    .btn:hover {
+      color: #fff;
+      border-color: var(--orange);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px var(--orange-glow);
+    }
+
+    .btn.dark {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .btn.dark:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+
+    /* Code Card Animation */
+    .code-card-wrap {
+      perspective: 1000px;
+    }
+
+    .code-card {
+      position: relative;
+      background: var(--ink);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      transform: rotate(2deg);
+      transition: transform 0.5s ease;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      animation: floatCard 6s ease-in-out infinite;
+    }
+
+    @keyframes floatCard {
+      0%, 100% { transform: rotate(2deg) translateY(0px); }
+      50% { transform: rotate(-1deg) translateY(-14px); }
+    }
+
+    .code-card:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+
+    .code-card::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -20%;
+      height: 40%;
+      background: linear-gradient(transparent, rgba(255, 255, 255, 0.06), transparent);
+      animation: scanline 5s linear infinite;
+    }
+
+    @keyframes scanline {
+      to { top: 120%; }
+    }
+
+    .dots {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .dots i {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4a4e69;
+    }
+
+    .dots i:first-child { background: var(--orange); }
+    .dots i:nth-child(2) { background: #e47a45; }
+    .dots i:nth-child(3) { background: #ded9d1; }
+
+    pre {
+      font-family: "Space Mono", monospace;
+      font-size: 13px;
+      line-height: 1.9;
+      color: #ece8e0;
+      white-space: pre-wrap;
+    }
+
+    .code-keyword { color: #ed8450; font-weight: 700; }
+    .code-string { color: #e8d9c9; }
+    .code-comment { color: #82889e; font-style: italic; }
+    .code-prop { color: #ded9d1; }
+
+    /* Layout Sections */
+    .section {
+      padding: 110px 7%;
+      position: relative;
+    }
+
+    .section.alt {
+      background: var(--paper);
+    }
+
+    .wrap {
+      width: min(1180px, 100%);
+      margin: auto;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .kicker {
+      font-family: "Space Mono", monospace;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+
+    .section h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      font-weight: 800;
+    }
+
+    .section-intro {
+      max-width: 500px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* About Grid & Experience Stats */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 50px;
+      align-items: stretch;
+    }
+
+    .experience-card {
+      background: var(--ink);
+      color: #fff;
+      border-radius: 24px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .experience-card::before {
+      content: "<developer />";
+      font-family: "Space Mono", monospace;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    .experience-num {
+      font-size: clamp(44px, 5vw, 58px);
+      font-weight: 800;
+      line-height: 1;
+      margin-top: 40px;
+      color: #fff;
+    }
+
+    .experience-num span {
+      color: var(--orange);
+    }
+
+    .experience-label {
+      color: #c5c7d0;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .experience-badge {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      font-size: 12px;
+      color: var(--orange2);
+      font-family: "Space Mono", monospace;
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .about-text {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #4d5367;
+    }
+
+    .about-text b {
+      color: var(--orange);
+    }
+
+    .highlights-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .highlight-item {
+      background: rgba(201, 91, 44, 0.05);
+      border: 1px solid rgba(201, 91, 44, 0.15);
+      padding: 16px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .highlight-item i {
+      color: var(--orange);
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 28px;
+      border-radius: 20px;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(41, 44, 70, 0.1);
+      border-color: rgba(201, 91, 44, 0.4);
+    }
+
+    .skill-card::after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      right: -30px;
+      bottom: -30px;
+      background: rgba(201, 91, 44, 0.06);
+      transition: all 0.3s ease;
+    }
+
+    .skill-card:hover::after {
+      transform: scale(1.5);
+      background: rgba(201, 91, 44, 0.12);
+    }
+
+    .skill-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--cream);
+      color: var(--orange);
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+    }
+
+    .skill-card h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .skill-card p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    /* Projects Tools / Table */
+    .project-tools {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter {
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #62697b;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter.active, .filter:hover {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
+    }
+
+    .search-box {
+      position: relative;
+      min-width: 240px;
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      width: 16px;
+      height: 16px;
+    }
+
+    .search {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px 14px 10px 36px;
+      outline: none;
+      width: 100%;
+      font-size: 13px;
+      transition: border-color 0.3s;
+    }
+
+    .search:focus {
+      border-color: var(--orange);
+    }
+
+    .table-wrap {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(41, 44, 70, 0.04);
+    }
+
+    .project-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .project-table th {
+      font-family: "Space Mono", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: left;
+      padding: 18px 20px;
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .project-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid #f0ebe3;
+      font-size: 14px;
+    }
+
+    .project-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .project-table tbody tr {
+      transition: background 0.2s;
+    }
+
+    .project-table tbody tr:hover {
+      background: #fff8f4;
+    }
+
+    .num {
+      font-family: "Space Mono", monospace;
+      color: #a3a7b3;
+      font-size: 12px;
+    }
+
+    .project-name {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .tech-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(201, 91, 44, 0.08);
+      color: var(--orange);
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .view-link {
+      font-family: "Space Mono", monospace;
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: transform 0.2s;
+    }
+
+    .view-link:hover {
+      transform: translateX(4px);
+    }
+
+    .mobile-projects {
+      display: none;
+    }
+
+    .no-results {
+      padding: 30px;
+      text-align: center;
+      color: var(--muted);
+      font-family: "Space Mono", monospace;
+      font-size: 14px;
+    }
+
+    /* Stats Banner */
+    .stats-banner {
+      margin-top: 40px;
+      background: var(--ink);
+      border-radius: 20px;
+      padding: 30px;
+      color: #fff;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 32px;
+      color: var(--orange2);
+      font-weight: 800;
+    }
+
+    .stat-item p {
+      font-size: 13px;
+      color: #c3c5cf;
+    }
+
+    /* Contact Section */
+    .contact {
+      background: var(--ink);
+      color: #fff;
+      padding: 100px 7%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-bg-ring {
+      position: absolute;
+      width: 550px;
+      height: 550px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 50%;
+      right: -180px;
+      top: -200px;
+      animation: spin 25s linear infinite;
+      pointer-events: none;
+    }
+
+    .contact-bg-ring2 {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border: 1px solid rgba(201, 91, 44, 0.25);
+      border-radius: 50%;
+      right: -100px;
+      top: -120px;
+      animation: spin 15s linear infinite reverse;
+      pointer-events: none;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .contact-inner {
+      width: min(1180px, 100%);
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact h2 {
+      font-size: clamp(36px, 5.5vw, 68px);
+      letter-spacing: -0.05em;
+      max-width: 720px;
+      font-weight: 800;
+      line-height: 1.05;
+    }
+
+    .contact p {
+      color: #c3c5cf;
+      max-width: 580px;
+      margin: 20px 0 32px;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .contact .btn {
+      border-color: #5d6175;
+      color: #fff;
+    }
+
+    .contact .btn.dark {
+      background: #fff;
+      color: var(--ink);
+      border-color: #fff;
+    }
+
+    .contact .btn.dark:hover {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+    }
+
+    /* Footer */
+    footer {
+      background: #1e2033;
+      color: #9ea2b4;
+      padding: 24px 7%;
+      font-size: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-inner {
+      width: min(1180px, 100%);
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+
+    /* Scroll Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stats-banner {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      nav {
+        top: 10px;
+      }
+      .nav-links, .nav-cta {
+        display: none;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .hero {
+        padding: 130px 6% 70px;
+      }
+      h1 {
+        font-size: 42px;
+      }
+      .section {
+        padding: 70px 6%;
+      }
+      .section-head {
+        display: block;
+      }
+      .section-intro {
+        margin-top: 12px;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      .highlights-list {
+        grid-template-columns: 1fr;
+      }
+      .project-tools {
+        display: block;
+      }
+      .filters {
+        margin-bottom: 12px;
+      }
+      .search-box {
+        width: 100%;
+      }
+      .table-wrap {
+        display: none;
+      }
+      .mobile-projects {
+        display: grid;
+        gap: 12px;
+      }
+      .mproject-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        padding: 20px;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .mproject-card strong {
+        font-size: 15px;
+        color: var(--ink);
+      }
+      .mproject-card .tech-tag {
+        align-self: flex-start;
+      }
+      .mproject-card a {
+        font-family: "Space Mono", monospace;
+        font-size: 11px;
+        color: var(--orange);
+        font-weight: 700;
+        margin-top: 4px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a class="logo" href="#">ANISHA<span>.</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href="Anisha Sharma - Web Developer CV.pdf" target="_blank" rel="noopener">
+      <span>View CV</span> <i data-lucide="file-text" style="width:14px;height:14px;"></i>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+      <i data-lucide="menu" style="width:24px;height:24px;"></i>
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-inner">
+      <div class="reveal">
+        <div class="eyebrow">
+          <span class="pulse-dot"></span> Website Developer Executive
+        </div>
+        <h1>Building <span class="accent">websites</span> that look good & work better.</h1>
+        <div class="typewrap">
+          <span id="typedText"></span><span class="cursor"></span>
+        </div>
+        <p class="hero-copy">
+          Dedicated Website Developer Executive proficient in WordPress, Shopify, Drupal, Webflow, and Wix. Specializing in HTML, CSS, JavaScript, page builders (Elementor/Divi), e-commerce management, and SEO optimization.
+        </p>
+        <div class="actions">
+          <a class="btn dark" href="#projects">
+            <span>Explore 60+ Projects</span> <i data-lucide="arrow-up-right" style="width:16px;height:16px;"></i>
+          </a>
+          <a class="btn" href="Anisha Sharma - Web Developer CV.pdf" target="_blank" rel="noopener">
+            <span>View CV</span> <i data-lucide="external-link" style="width:16px;height:16px;"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="code-card-wrap reveal">
+        <div class="code-card">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <pre><span class="code-keyword">const</span> <span class="code-prop">developer</span> = {
+  name: <span class="code-string">"Anisha Sharma"</span>,
+  title: <span class="code-string">"Website Developer Executive"</span>,
+  experience: <span class="code-string">"4+ Years"</span>,
+  location: <span class="code-string">"Gurugram, India"</span>,
+  platforms: [
+    <span class="code-string">"WordPress"</span>,
+    <span class="code-string">"Shopify"</span>,
+    <span class="code-string">"Drupal"</span>,
+    <span class="code-string">"Wix / Webflow"</span>
+  ],
+  stack: [<span class="code-string">"HTML5"</span>, <span class="code-string">"CSS3"</span>, <span class="code-string">"JS"</span>, <span class="code-string">"Liquid"</span>],
+  <span class="code-prop">seoReady</span>: <span class="code-keyword">true</span>,
+  <span class="code-prop">versionControl</span>: <span class="code-string">"Git / GitHub"</span>
+};</pre>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="section alt" id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">01 / Profile</div>
+          <h2>Crafting digital experiences that perform.</h2>
+        </div>
+        <p class="section-intro">
+          A seamless blend of custom front-end development, CMS management, e-commerce architecture, and technical SEO.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="experience-card reveal">
+          <div>
+            <div class="experience-num">4+ <span>Years</span></div>
+            <div class="experience-label">4 Years 2 Months Professional Web Development Experience</div>
+          </div>
+          <div>
+            <div class="experience-badge">BCA Graduate • Gurugram</div>
+          </div>
+        </div>
+
+        <div class="about-content reveal">
+          <p class="about-text">
+            I’m <b>Anisha Sharma</b>, a dedicated <b>Website Developer Executive</b> based in Gurugram. I build responsive, high-performing websites and e-commerce platforms across <b>WordPress, Shopify, Drupal, Webflow, and Wix</b>.
+          </p>
+          <p style="color: #646b7d; font-size: 15px; line-height: 1.7;">
+            My expertise spans custom front-end code (HTML, CSS, JS), version control workflows with Git/GitHub, theme customization, Shopify Liquid templating, Core Web Vitals speed optimization, and technical SEO implementation.
+          </p>
+
+          <div class="highlights-list">
+            <div class="highlight-item">
+              <i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Custom Theme & Layout Design
+            </div>
+            <div class="highlight-item">
+              <i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> E-Commerce Catalog Management
+            </div>
+            <div class="highlight-item">
+              <i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Speed & Technical SEO Audit
+            </div>
+            <div class="highlight-item">
+              <i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Git & Version Control Workflows
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">02 / Toolkit & Skills</div>
+          <h2>Core Technologies & Tools.</h2>
+        </div>
+        <p class="section-intro">
+          The essential frameworks, platforms, and growth tools I utilize to construct and scale client platforms.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <div class="skill-icon">
+            <i data-lucide="layout-grid" style="width:22px;height:22px;"></i>
+          </div>
+          <h3>CMS & E-Commerce</h3>
+          <p>WordPress, Shopify, Drupal, Wix, Webflow, WooCommerce, Liquid Templating</p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">
+            <i data-lucide="code" style="width:22px;height:22px;"></i>
+          </div>
+          <h3>Front-End Dev</h3>
+          <p>HTML5, CSS3, JavaScript, Responsive Mobile-First Design, Cross-Browser Testing</p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">
+            <i data-lucide="layers" style="width:22px;height:22px;"></i>
+          </div>
+          <h3>Builders & UI/UX</h3>
+          <p>Elementor, Gutenberg, Divi Builder, UI/UX Enhancements, Canva Design</p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">
+            <i data-lucide="trending-up" style="width:22px;height:22px;"></i>
+          </div>
+          <h3>SEO & Technical</h3>
+          <p>On-Page & Technical SEO, Search Console, Speed Optimization, Git/GitHub, cPanel</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section alt" id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">03 / Selected Work</div>
+          <h2>Featured Projects & Portfolio.</h2>
+        </div>
+        <p class="section-intro">
+          A comprehensive collection of 60+ live client websites, e-commerce stores, and web portals categorized by platform.
+        </p>
+      </div>
+
+      <div class="project-tools reveal">
+        <div class="filters" id="projectFilters">
+          <button class="filter active" data-filter="all">All Platforms</button>
+          <button class="filter" data-filter="wordpress">WordPress</button>
+          <button class="filter" data-filter="shopify">Shopify</button>
+          <button class="filter" data-filter="custom">Custom HTML/PHP</button>
+          <button class="filter" data-filter="webflow">Webflow / Wix</button>
+        </div>
+        <div class="search-box">
+          <i data-lucide="search"></i>
+          <input type="text" id="projectSearch" class="search" placeholder="Search project name or platform...">
+        </div>
+      </div>
+
+      <!-- Desktop Table View -->
+      <div class="table-wrap reveal">
+        <table class="project-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Project Name</th>
+              <th>Platform / Tech</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="projectTableBody">
+            <!-- Dynamically populated via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile Project List -->
+      <div class="mobile-projects" id="mobileProjectList">
+        <!-- Dynamically populated via JS -->
+      </div>
+
+      <div class="stats-banner reveal">
+        <div class="stat-item">
+          <h3 id="totalProjectsCount">60+</h3>
+          <p>Total Delivered Projects</p>
+        </div>
+        <div class="stat-item">
+          <h3>35+</h3>
+          <p>WordPress Buildouts</p>
+        </div>
+        <div class="stat-item">
+          <h3>20+</h3>
+          <p>Shopify & Custom E-Commerce</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="contact-bg-ring"></div>
+    <div class="contact-bg-ring2"></div>
+    <div class="contact-inner wrap">
+      <div class="reveal">
+        <div class="kicker" style="color: var(--orange2);">04 / Contact</div>
+        <h2>Let's build something remarkable together.</h2>
+        <p>
+          I am available for Website Developer Executive roles, CMS platform optimizations, e-commerce builds, and custom front-end development projects.
+        </p>
+        <div class="contact-links">
+          <a class="btn dark" href="mailto:anisha.sharma.dev@gmail.com">
+            <i data-lucide="mail" style="width:16px;height:16px;"></i> <span>Get In Touch</span>
+          </a>
+          <a class="btn" href="Anisha Sharma - Web Developer CV.pdf" target="_blank" rel="noopener">
+            <i data-lucide="file-text" style="width:16px;height:16px;"></i> <span>Download Resume</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div>&copy; 2026 Anisha Sharma. All rights reserved.</div>
+      <div>Designed & Built with precision and care.</div>
+    </div>
+  </footer>
+
+  <!-- Script for Dynamic Rendering, Filter, Search and Animations -->
+  <script>
+    // Complete Project Data extracted from source images[cite: 1, 2]
+    const projectsData = [
+      // Image 1 Projects[cite: 1]
+      { name: "Trimutri Products", url: "https://trimurtiproducts.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Ekhlas Law", url: "https://ekhlaslaw.com/", platform: "Custom HTML, CSS", category: "custom" },
+      { name: "Prl equipments", url: "https://www.prlequipments.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Avr logistics", url: "https://avrlogistics.in/", platform: "WordPress", category: "wordpress" },
+      { name: "Prime rigs", url: "https://prime-rigs.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Markable", url: "https://markableintl.com/", platform: "WordPress", category: "wordpress" },
+      { name: "e-waste", url: "https://ewasteitrecycling.ae", platform: "WordPress", category: "wordpress" },
+      { name: "itscrapbuyer", url: "https://itscrapibrahim.ae/", platform: "WordPress", category: "wordpress" },
+      { name: "Prowolf", url: "https://www.prowolf.in/", platform: "Shopify", category: "shopify" },
+      { name: "Bracesaurus", url: "https://bracesaurus.com.sg/", platform: "WordPress", category: "wordpress" },
+      { name: "studio701", url: "https://www.studio701.net/", platform: "Wix", category: "webflow" },
+      { name: "Best himalaya", url: "https://besthimalaya.com/", platform: "Shopify", category: "shopify" },
+      { name: "FIP", url: "https://fiprealtors.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Cutis", url: "https://cutisinternational.ae/", platform: "Custom HTML", category: "custom" },
+      { name: "Rudra Tree", url: "https://rudratree.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Vitalis", url: "https://eseodev.com/vitalis/", platform: "WordPress", category: "wordpress" },
+      { name: "Dynamic Industries", url: "https://dynamicindustrialuae.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Himalayan Bazaar", url: "https://www.himalayanbazaar.com/", platform: "Shopify", category: "shopify" },
+      { name: "Karekraft", url: "https://karekraft.com/", platform: "Shopify", category: "shopify" },
+      { name: "Perfect Professional", url: "https://perfectprofessional.in/", platform: "Custom / WordPress", category: "wordpress" },
+      { name: "Sharjah Furniture Complex", url: "https://sharjahfurniturecomplex.ae/", platform: "WordPress", category: "wordpress" },
+      { name: "The Tutoring Center", url: "http://tutoringcenterdubai.ae/", platform: "Plesk Custom HTML", category: "custom" },
+      { name: "Summer Spa", url: "https://summerspa.ae/", platform: "WordPress", category: "wordpress" },
+      { name: "Indo Globel", url: "https://indogloballei.com/", platform: "Custom HTML", category: "custom" },
+      { name: "Vjxray", url: "https://vjxray.com", platform: "WordPress", category: "wordpress" },
+      { name: "lycasurvey", url: "https://lycasurvey.com", platform: "WordPress", category: "wordpress" },
+      { name: "zyoin", url: "https://www.zyoin.com/", platform: "Webflow", category: "webflow" },
+      { name: "Penva Security", url: "https://penvasecurity.com.au/", platform: "WordPress", category: "wordpress" },
+      { name: "Oncurehhc", url: "https://oncurehhc.ae/", platform: "Custom HTML", category: "custom" },
+      { name: "Mousiki", url: "https://mousiki.io/", platform: "Custom HTML", category: "custom" },
+      { name: "Edu radiation (in)", url: "https://eduradiationtutorials.in/", platform: "WordPress", category: "wordpress" },
+      { name: "Edu radiation (com)", url: "https://eduradiationtutorials.com/", platform: "WordPress", category: "wordpress" },
+      { name: "KBS Certification", url: "https://www.kbscertification.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Salwan Surgicare", url: "https://salwansurgicare.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Sweet Spa", url: "https://sweetspa.ae/", platform: "WordPress", category: "wordpress" },
+      { name: "Planet Green", url: "https://www.planetgreen.ae/", platform: "Custom PHP", category: "custom" },
+      { name: "Sharp409", url: "https://www.sharp409a.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Bettle Book Store", url: "https://beetlebookshop.com/", platform: "Shopify", category: "shopify" },
+
+      // Image 2 WordPress Projects[cite: 2]
+      { name: "Geetanjali Salon", url: "https://www.geetanjalisalon.com/", platform: "WordPress", category: "wordpress" },
+      { name: "SK Projects India", url: "https://www.skprojectsindia.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Expense Anywhere", url: "https://expenseanywhere.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Samrat Interiors", url: "https://samratinteriors.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Furnfair", url: "https://www.furnfair.in/", platform: "WordPress", category: "wordpress" },
+      { name: "Rococo Milano", url: "https://rococomilano.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Hypr Online", url: "https://hypronline.com/", platform: "WordPress", category: "wordpress" },
+      { name: "CAS India", url: "https://casindia.in/", platform: "WordPress", category: "wordpress" },
+      { name: "Organic Roots", url: "https://organicroots.co.in/", platform: "WordPress", category: "wordpress" },
+      { name: "Atmah", url: "https://www.atmah.in/", platform: "WordPress", category: "wordpress" },
+      { name: "Em Marble", url: "https://emmarble.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Almac Sports", url: "https://almacsports.co.in/", platform: "WordPress", category: "wordpress" },
+      { name: "SIAL India", url: "https://www.sialindia.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Vinexpo India", url: "https://vinexpo-india.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Interads", url: "https://www.interads.in/", platform: "WordPress", category: "wordpress" },
+      { name: "Godfather Beer", url: "https://godfatherbeer.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Devans", url: "https://devans.co.in/", platform: "WordPress", category: "wordpress" },
+      { name: "Socialovo", url: "https://socialovo.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Dr. Arif Akhtar Urology", url: "https://drarifakhtar.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Madat Foundation", url: "https://madat.foundation/", platform: "WordPress", category: "wordpress" },
+      { name: "I Am Navigato", url: "https://iamnavigato.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Emiza Inc", url: "https://www.emizainc.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Leads the Way", url: "https://leadstheway.in/", platform: "WordPress", category: "wordpress" },
+      { name: "Atul Group", url: "https://atulgroup.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Greymuro", url: "http://greymuro.com/", platform: "WordPress", category: "wordpress" },
+      { name: "D2C Routeignite", url: "https://d2c.routeignite.com/", platform: "WordPress", category: "wordpress" },
+      { name: "Neu Salonz", url: "https://neusalonz.in/", platform: "WordPress", category: "wordpress" },
+      { name: "Arjun Realty", url: "https://arjunrealty.in/", platform: "WordPress / Elementor", category: "wordpress" },
+
+      // Image 2 Shopify Projects[cite: 2]
+      { name: "Lal Sweets", url: "https://www.lalsweets.com/", platform: "Shopify", category: "shopify" },
+      { name: "Yellow Naturals", url: "https://www.yellownaturals.in/", platform: "Shopify", category: "shopify" },
+      { name: "Shopavro", url: "https://www.shopavro.com/", platform: "Shopify", category: "shopify" },
+      { name: "Rian Decor", url: "https://www.riandecor.com/", platform: "Shopify", category: "shopify" },
+      { name: "Indus Creamery", url: "https://www.induscreamery.com/", platform: "Shopify", category: "shopify" },
+      { name: "Oliveware", url: "https://www.oliveware.com/", platform: "Shopify", category: "shopify" },
+      { name: "The Kina", url: "https://thekina.in/", platform: "Shopify", category: "shopify" },
+      { name: "Nestroots", url: "https://www.nestroots.com/", platform: "Shopify", category: "shopify" },
+      { name: "Monkblu", url: "https://monkblu.com/", platform: "Shopify", category: "shopify" },
+      { name: "Jhumru", url: "https://jhumru.com/", platform: "Shopify", category: "shopify" },
+      { name: "Peaches N Pinks", url: "https://www.peachesnpinks.com/", platform: "Shopify", category: "shopify" },
+      { name: "Silverama", url: "https://www.silverama.in/", platform: "Shopify", category: "shopify" },
+      { name: "ShopC Green", url: "https://www.shopcgreen.com/", platform: "Shopify", category: "shopify" },
+      { name: "Niloufer", url: "https://www.niloufer.co/", platform: "Shopify", category: "shopify" },
+      { name: "Nakhrewaali", url: "https://www.nakhrewaali.co/", platform: "Shopify", category: "shopify" },
+      { name: "The Green Boutique", url: "https://thegreenboutique.in/", platform: "Shopify", category: "shopify" },
+      { name: "By The Bay", url: "https://shopbythebay.com/", platform: "Shopify", category: "shopify" },
+      { name: "India Hemp & Co", url: "https://www.indiahempandco.com/", platform: "Shopify", category: "shopify" },
+      { name: "Dabble", url: "https://dabbleplayart.com/", platform: "Shopify", category: "shopify" },
+      { name: "The Stumbling Store", url: "https://www.thestumblingstore.com/", platform: "Shopify", category: "shopify" },
+      { name: "Pandasbox", url: "https://pandasbox.in/", platform: "Shopify", category: "shopify" }
+    ];
+
+    // State Variables
+    let currentFilter = 'all';
+    let searchQuery = '';
+
+    // Render Projects Table & Mobile Cards
+    function renderProjects() {
+      const tableBody = document.getElementById('projectTableBody');
+      const mobileList = document.getElementById('mobileProjectList');
+      
+      tableBody.innerHTML = '';
+      mobileList.innerHTML = '';
+
+      const filtered = projectsData.filter(item => {
+        const matchesCategory = currentFilter === 'all' || item.category === currentFilter;
+        const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                              item.platform.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        const noDataHtml = `<tr><td colspan="4" class="no-results">No projects found matching your criteria.</td></tr>`;
+        tableBody.innerHTML = noDataHtml;
+        mobileList.innerHTML = `<div class="no-results">No projects found matching your criteria.</div>`;
+        return;
+      }
+
+      filtered.forEach((item, index) => {
+        const padIndex = (index + 1).toString().padStart(2, '0');
+        
+        // Table Row HTML
+        const tr = document.createElement('tr');
+        tr.setAttribute('data-cat', item.category);
+        tr.innerHTML = `
+          <td class="num">${padIndex}</td>
+          <td class="project-name">${item.name}</td>
+          <td><span class="tech-tag">${item.platform}</span></td>
+          <td>
+            <a href="${item.url}" target="_blank" rel="noopener" class="view-link">
+              Visit Site <i data-lucide="arrow-up-right" style="width:12px;height:12px;"></i>
+            </a>
+          </td>
+        `;
+        tableBody.appendChild(tr);
+
+        // Mobile Card HTML
+        const card = document.createElement('div');
+        card.className = 'mproject-card';
+        card.setAttribute('data-cat', item.category);
+        card.innerHTML = `
+          <strong>${item.name}</strong>
+          <span class="tech-tag">${item.platform}</span>
+          <a href="${item.url}" target="_blank" rel="noopener">
+            Visit Site <i data-lucide="arrow-up-right" style="width:12px;height:12px;"></i>
+          </a>
+        `;
+        mobileList.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    // Filter Button Handler
+    document.getElementById('projectFilters').addEventListener('click', (e) => {
+      if (e.target.classList.contains('filter')) {
+        document.querySelectorAll('.filter').forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+        currentFilter = e.target.getAttribute('data-filter');
+        renderProjects();
+      }
+    });
+
+    // Search Input Handler
+    document.getElementById('projectSearch').addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim();
+      renderProjects();
+    });
+
+    // Typing Effect
+    const words = ["WordPress Expert", "Shopify Developer", "Custom HTML/CSS", "Webflow Specialist", "Technical SEO"];
+    let i = 0, timer;
+
+    function typingEffect() {
+      let word = words[i].split("");
+      var loopTyping = function() {
+        if (word.length > 0) {
+          document.getElementById('typedText').innerHTML += word.shift();
+        } else {
+          setTimeout(deletingEffect, 2000);
+          return false;
+        }
+        timer = setTimeout(loopTyping, 100);
+      };
+      loopTyping();
+    }
+
+    function deletingEffect() {
+      let word = words[i].split("");
+      var loopDeleting = function() {
+        if (word.length > 0) {
+          word.pop();
+          document.getElementById('typedText').innerHTML = word.join("");
+        } else {
+          if (words.length > (i + 1)) {
+            i++;
+          } else {
+            i = 0;
+          }
+          typingEffect();
+          return false;
+        }
+        timer = setTimeout(loopDeleting, 50);
+      };
+      loopDeleting();
+    }
+
+    // Scroll Progress
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progressBar').style.width = scrolled + '%';
+    });
+
+    // Scroll Reveal Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProjects();
+      typingEffect();
+      lucide.createIcons();
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      document.getElementById('totalProjectsCount').textContent = projectsData.length + '+';
+    });
+  </script>
+</body>
+</html>
